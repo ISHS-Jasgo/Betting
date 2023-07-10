@@ -73,5 +73,9 @@ export class UserDatabase {
             });
         });
     }
+
+    close() {
+        this.db.end();
+    }
 }
 

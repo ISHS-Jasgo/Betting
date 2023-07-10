@@ -2,6 +2,7 @@ import express from 'express';
 import { QueryChecker } from '../util/query_checker';
 import { UserDatabase } from '../database/user_data';
 const signUpRouter = express.Router();
+const userDatabase = new UserDatabase();
 
 signUpRouter.get('/', (req, res) => {
     res.status(200).render(__dirname.replace('routers', '') + '/public/signup.html');
@@ -13,7 +14,6 @@ signUpRouter.post('/', (req, res) => {
     let name = req.body.name;
     let password = req.body.password;
     let checker = new QueryChecker();
-    let userDatabase = new UserDatabase();
     console.log(name, key, password)
     if (checker.notNull(key, name, password)) {
         if (checker.hasInvalidString(name, password)) {

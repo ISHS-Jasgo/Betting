@@ -4,6 +4,7 @@ import express from 'express';
 
 
 const loginRouter = express.Router();
+const userDatabase = new UserDatabase();
 
 loginRouter.get('/', (req, res, next) => {
     res.status(200).render(__dirname.replace('routers', '') + '/public/login.html');
@@ -13,7 +14,6 @@ loginRouter.post('/', (req, res, next) => {
     let name = req.body.name;
     let password = req.body.password;
     let checker = new QueryChecker();
-    let userDatabase = new UserDatabase();
     if (checker.notNull(name, password)) {
         if (checker.hasInvalidString(name, password)) {
             res.status(400).send("Invalid characters in name or password");
