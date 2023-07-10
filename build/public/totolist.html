@@ -222,9 +222,10 @@
       team2_name = data["games"][id]["team2"]["name"];
       if (bettingWin) {
         setTimeout(() => {
-          bettingWin.document.getElementById('total_money').innerHTML = total_money;
-          bettingWin.document.getElementById('team1_bet').innerHTML = team1_bet;
-          bettingWin.document.getElementById('team2_bet').innerHTML = team2_bet;
+          bettingWin.document.getElementById('total_money').innerHTML = "전체 배팅 금액: " + total_money;
+          //get team name
+          bettingWin.document.getElementById('team1_bet').innerHTML = team1_name + "배팅금액: " + team1_bet;
+          bettingWin.document.getElementById('team2_bet').innerHTML = team2_name + "배팅금액: " + team2_bet;
           bettingWin.document.getElementById('team1_rate').innerHTML = team1_rate;
           bettingWin.document.getElementById('team2_rate').innerHTML = team2_rate;
           bettingWin.document.getElementById('option1').innerHTML = team1_name;
